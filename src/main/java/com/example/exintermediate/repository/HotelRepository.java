@@ -26,6 +26,7 @@ public class HotelRepository {
     hotel.setHotelName(rs.getString("hotel_name"));
     hotel.setAddress(rs.getString("address"));
     hotel.setNearestStation(rs.getString("nearest_station"));
+    hotel.setPrice(rs.getInt("price"));
     hotel.setParking(rs.getString("parking"));
 
     return hotel;
@@ -44,5 +45,17 @@ public class HotelRepository {
     List<Hotel> hotelList = template.query(sql, param, HOTEL_ROW_MAPPER);
 
     return hotelList;
+  }
+
+  /**
+   * すべてのホテルを取得する
+   * 
+   * @return ホテル一覧
+   */
+  public List<Hotel> findAll() {
+    String sql = "select * from hotels order by price desc;";
+    List<Hotel> allHotels = template.query(sql, HOTEL_ROW_MAPPER);
+
+    return allHotels;
   }
 }

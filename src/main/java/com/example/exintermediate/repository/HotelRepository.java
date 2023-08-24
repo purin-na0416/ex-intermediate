@@ -38,7 +38,7 @@ public class HotelRepository {
      * @return 取得したホテルのリスト
      */
   public List<Hotel> load(Integer price) {
-    String sql = "select * from hotels where price <=:price;";
+    String sql = "select * from hotels where price <=:price order by price desc;";
     SqlParameterSource param = new MapSqlParameterSource().addValue("price", price);
 
     List<Hotel> hotelList = template.query(sql, param, HOTEL_ROW_MAPPER);

@@ -39,10 +39,10 @@ public class HotelController {
       hotelList = hotelService.hotels(price);
     }
 
-    if(price > 300000) {
+    if(price != null && price > 300000) {
       hotelList = null;
     }
-    
+
     model.addAttribute("hotelList", hotelList);
     model.addAttribute("price", price);
 

@@ -25,4 +25,14 @@ public class HotelService {
     List<Hotel> hotelList = hotelRepository.load(price);
     return hotelList;
   }
+
+  /**
+   * hotelRepositoryのfindAll()メソッドからすべてのホテルを取得する
+   * 
+   * @return ホテル一覧
+   */
+  public List<Hotel> hotelIndex() {
+    List<Hotel> allHotels = hotelRepository.findAll();
+    return allHotels;
+  }
 }
